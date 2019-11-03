@@ -1,8 +1,8 @@
 #include <avr/delay.h>
 #include "xGPIO.h"
 
-xGPIO output(XGPIO_5, XOUTPUT);
-xGPIO input(XGPIO_3, XINPUT);
+xGPIO output(XGPIO_PB5, XOUTPUT);
+xGPIO input(XGPIO_PB3, XINPUT);
 
 extern "C" int main()
 {
