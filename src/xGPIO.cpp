@@ -1,26 +1,41 @@
 #include "xGPIO.h"
 
-xGPIO::xGPIO(int pin, int mode)
+xGPIO::xGPIO(int num, int mode)
 {
-    _pin = pin;
+    if (num >= XGPIO_PB0 && num <= XGPIO_PB7)
+    {
+        _ddr = &DDRB;
+        _port =  &PORTB;
+        _pin = &PINB;
+        _num = num - XGPIO_PB0;
+    }
+    else if (num >= XGPIO_PC0 && num <= XGPIO_PC6)
+    {
+        _ddr = &DDRC;
+        _port =  &PORTC;
+        _pin = &PINC;
+        _num = num - XGPIO_PC0;
+    }
+    else if (num >= XGPIO_PD0 && num <= XGPIO_PD7)
+    {
+        _ddr = &DDRD;
+        _port =  &PORTD;
+        _pin = &PIND;
+        _num = num - XGPIO_PD0;
+    }
+
     if (mode == XOUTPUT)
-    {
-        DDRB |= 1 << pin;
-        DDRD &= ~PD7;
-    }
+        (*_ddr) |= (1 << _num);
     else
-    {
-        DDRB &= ~(1 << pin);
-        PORTB |= (1 << pin);
-    }
+        (*_ddr) &= ~(0 << _num);
 }
 
 int xGPIO::read()
 {
-    return !bit_is_clear(PINB, 3);
+    return !bit_is_clear((*_pin), _num);
 }
 
 void xGPIO::write(int state)
 {
-    PORTB = state << _pin;
+    (*_port) = state << _num;
 }

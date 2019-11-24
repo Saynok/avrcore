@@ -10,9 +10,10 @@ public:
     xGPIO(int pin, int mode );
     int read();
     void write(int state);
-
 private:
-    int _pin;
-    int _port;
+    uint8_t _num;
+    volatile uint8_t * _port;
+    volatile uint8_t * _ddr;
+    volatile uint8_t * _pin;
 };
 #endif

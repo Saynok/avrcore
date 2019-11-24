@@ -14,7 +14,7 @@ enum gpio_modes
 
 enum gpio_names
 {
-    XGPIO_PB0,
+    XGPIO_PB0 = 0,
     XGPIO_PB1,
     XGPIO_PB2,
     XGPIO_PB3,
@@ -38,6 +38,12 @@ enum gpio_names
     XGPIO_PD4,
     XGPIO_PD5,
     XGPIO_PD7,
+};
+
+enum arduino_names
+{
+    D11 = XGPIO_PB0,
+    D13 = XGPIO_PB5 // usually using for LED
 };
 
 #endif
