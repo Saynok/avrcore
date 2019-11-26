@@ -5,12 +5,10 @@
 
 xGPIO output(XGPIO_PC0, XOUTPUT);
 xGPIO input(XGPIO_PB3, XINPUT);
-xUART uart;
+xUART uart(115200);
 
 extern "C" int main()
 {
-  unsigned char out = '0';
-
   for (;;)
   {
     output.write(1);
