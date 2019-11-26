@@ -21,7 +21,7 @@ enum gpio_modes
     XOUTPUT = 1
 };
 
-enum gpio_names
+enum gpio_pins
 {
     XGPIO_PB0 = 0,
     XGPIO_PB1,
