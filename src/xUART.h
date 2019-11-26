@@ -11,7 +11,7 @@
 class xUART
 {
 public:
-    xUART(double baudrate = 9600, long parity = 0, long stopBit = 0);
+    xUART(double baudrate = 9600);
     void write(char out);
     void write(const char * string);
     int available();
