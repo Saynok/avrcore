@@ -1,6 +1,6 @@
 #include "xUART.h"
 
-xUART::xUART(double baudrate, long parity, long stopBit)
+xUART::xUART(double baudrate)
 {
     UCSR0A = 0x00;
     UCSR0B = 0x08;
