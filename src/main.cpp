@@ -1,19 +1,24 @@
 #include <util/delay.h>
 #include "xGPIO.h"
+#include "xUART.h"
+#include "pinout.h"
 
 xGPIO output(XGPIO_PC0, XOUTPUT);
 xGPIO input(XGPIO_PB3, XINPUT);
+xUART uart;
 
 extern "C" int main()
 {
-  output.write(1);
-  _delay_ms(500);
-  output.write(0);
-  _delay_ms(500);
+  unsigned char out = '0';
 
   for (;;)
   {
-    output.write(input.read());
-    _delay_ms(50);
+    output.write(1);
+
+    uart.write("Hello world!\n");
+
+    _delay_ms(500);
+    output.write(0);
+    _delay_ms(500);
   }
 }
