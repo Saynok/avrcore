@@ -1,15 +1,29 @@
 #ifndef THEFRAMEWORK_SYSTEM_H
 #define THEFRAMEWORK_SYSTEM_H
 
-#include "pinout.h"
+#include "avr/interrupt.h"
+#include "xUART.h"
+
+
 
 class System
 {
 public:
-    static long getFrequency()
+    static xUART *getUART()
     {
-        return SYSTEM_FREQUENCY;
+        return _uart;
     }
+
+    static void setUART( xUART *uart)
+    {
+        _uart = uart;
+    }
+
+private:
+     static xUART *_uart;
 };
+
+// Vectors
+
 
 #endif
